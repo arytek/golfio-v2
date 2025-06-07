@@ -9,7 +9,7 @@ export function setupHUD(state) {
         instructionsEl.textContent = 'Waiting for players...';
         break;
       case 'AIMING':
-        instructionsEl.textContent = 'Click and drag on the canvas to aim, release to shoot';
+        instructionsEl.textContent = 'Drag from your ball to aim, release to shoot';
         break;
       case 'SIMULATING':
         instructionsEl.textContent = 'Ball in motion...';
