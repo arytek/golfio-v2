@@ -12,6 +12,7 @@ export function startRendering(state) {
       ctx.fillStyle = ball.playerId === state.playerId ? '#e76f51' : '#264653';
       ctx.fill();
     }
+    
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
