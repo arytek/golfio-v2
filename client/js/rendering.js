@@ -12,15 +12,7 @@ export function startRendering(state) {
       ctx.fillStyle = ball.playerId === state.playerId ? '#e76f51' : '#264653';
       ctx.fill();
     }
-
-    if (state.aimLine) {
-      ctx.strokeStyle = '#ffffff';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(state.aimLine.startX, state.aimLine.startY);
-      ctx.lineTo(state.aimLine.currentX, state.aimLine.currentY);
-      ctx.stroke();
-    }
+    
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
