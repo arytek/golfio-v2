@@ -1,0 +1,18 @@
+{
+  "name": "golfio-v2",
+  "version": "1.0.0",
+  "description": "Golfio, but with Multiplayer!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.1.0",
+    "matter-js": "^0.20.0",
+    "socket.io": "^4.8.1"
+  }
+}

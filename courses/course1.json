@@ -1,0 +1,20 @@
+{
+  "name": "The Grüner Grasslands",
+  "holes": [
+    {
+      "hole": 1,
+      "par": 3,
+      "startPosition": { "x": 100, "y": 500 },
+      "holePosition": { "x": 750, "y": 150 },
+      "holeRadius": 12,
+      "staticShapes": [
+        { "type": "rectangle", "position": { "x": 400, "y": 600 }, "size": { "width": 800, "height": 50 }, "options": {"isStatic": true, "friction": 0.1} },
+        { "type": "rectangle", "position": { "x": 400, "y": 300 }, "size": { "width": 500, "height": 20 }, "options": {"isStatic": true, "friction": 0.1, "angle": 0.2} },
+        { "type": "circle", "position": { "x": 550, "y": 450 }, "radius": 40, "options": {"isStatic": true, "friction": 0.1} }
+      ],
+      "terrain": [
+        { "type": "sand", "path": [{ "x": 300, "y": 350 }, { "x": 500, "y": 380 }], "options": {"friction": 0.4} }
+      ]
+    }
+  ]
+}
