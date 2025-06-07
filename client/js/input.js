@@ -5,16 +5,12 @@ export function setupInput(socket, state) {
 
   canvas.addEventListener('mousedown', e => {
     if (state.gameState !== 'AIMING') return;
-    const ball = state.balls.find(b => b.playerId === state.playerId);
-    if (!ball) return;
-    const dx = e.offsetX - ball.position.x;
-    const dy = e.offsetY - ball.position.y;
-    if (dx * dx + dy * dy > 15 * 15) return;
+
     state.aim.dragging = true;
-    state.aim.startX = ball.position.x;
-    state.aim.startY = ball.position.y;
-    state.aim.currentX = ball.position.x;
-    state.aim.currentY = ball.position.y;
+    state.aim.startX = e.offsetX;
+    state.aim.startY = e.offsetY;
+    state.aim.currentX = e.offsetX;
+    state.aim.currentY = e.offsetY;
   });
 
   canvas.addEventListener('mousemove', e => {
