@@ -32,6 +32,7 @@ class GameRoom {
   }
 
   startGame(io) {
+    this.io = io;
     this.gameState = 'AIMING';
     this.engine = createEngine(this.courseData, Array.from(this.players.values()));
     io.to(this.roomId).emit('gameJoined', {
@@ -56,10 +57,8 @@ class GameRoom {
     const player = this.players.get(id);
     if (player && this.gameState === 'AIMING') {
       player.lockedShot = velocity;
-      if ([...this.players.values()].every(p => p.lockedShot)) {
-        clearTimeout(this.aimTimer);
-        this.startSim(this.io);
-      }
+      clearTimeout(this.aimTimer);
+      this.startSim(this.io);
     }
   }
 
@@ -69,9 +68,11 @@ class GameRoom {
     // apply locked shots
     const Matter = require('matter-js');
     for (const p of this.players.values()) {
-      const shot = p.lockedShot || { x: 0, y: 0 };
-      Matter.Body.setVelocity(p.ball, shot);
-      p.strokes += 1;
+      if (p.lockedShot) {
+        Matter.Body.setVelocity(p.ball, p.lockedShot);
+        p.strokes += 1;
+        p.lockedShot = null;
+      }
     }
     const interval = 1000 / 60; // physics step 60Hz
     this.simTimer = setInterval(() => {

@@ -5,6 +5,7 @@ export function setupInput(socket, state) {
 
   canvas.addEventListener('mousedown', e => {
     if (state.gameState !== 'AIMING') return;
+
     state.aim.dragging = true;
     state.aim.startX = e.offsetX;
     state.aim.startY = e.offsetY;

@@ -34,7 +34,7 @@ io.on('connection', socket => {
     socket.join(room.roomId);
     room.addPlayer(socket);
     io.to(room.roomId).emit('gameStateUpdate', { message: `${socket.id} joined.` });
-    if (room.players.size >= 2 && room.players.size <= 4 && room.gameState === 'WAITING') {
+    if (room.players.size >= 1 && room.players.size <= 4 && room.gameState === 'WAITING') {
       // start game after small delay
       setTimeout(() => {
         if (room.gameState === 'WAITING') {
