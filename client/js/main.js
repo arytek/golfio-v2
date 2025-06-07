@@ -1,6 +1,7 @@
 import { state } from './state.js';
 import { setupInput } from './input.js';
 import { startRendering } from './rendering.js';
+import { setupHUD } from './hud.js';
 
 const socket = io();
 state.socket = socket;
@@ -29,3 +30,4 @@ socket.on('gameOver', data => {
 
 setupInput(socket, state);
 startRendering(state);
+setupHUD(state);

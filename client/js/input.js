@@ -2,20 +2,26 @@ let canvas;
 let isDragging = false;
 let startX = 0;
 let startY = 0;
+let stateRef;
 
 export function setupInput(socket, state) {
   canvas = document.getElementById('gameCanvas');
+  stateRef = state;
 
   canvas.addEventListener('mousedown', e => {
     if (state.gameState !== 'AIMING') return;
     isDragging = true;
     startX = e.offsetX;
     startY = e.offsetY;
+    state.aimLine = { startX, startY, currentX: startX, currentY: startY };
   });
 
   canvas.addEventListener('mousemove', e => {
     if (!isDragging) return;
-    // we could draw the line here using a separate canvas overlay
+    if (state.aimLine) {
+      state.aimLine.currentX = e.offsetX;
+      state.aimLine.currentY = e.offsetY;
+    }
   });
 
   canvas.addEventListener('mouseup', e => {
@@ -25,5 +31,13 @@ export function setupInput(socket, state) {
     const dy = startY - e.offsetY;
     const velocity = { x: dx * 0.1, y: dy * 0.1 };
     socket.emit('playerInput', { velocity });
+    state.aimLine = null;
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    if (isDragging) {
+      isDragging = false;
+      stateRef.aimLine = null;
+    }
   });
 }

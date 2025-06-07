@@ -1,2 +1,17 @@
-body { margin: 0; overflow: hidden; }
+body { margin: 0; overflow: hidden; position: relative; }
 canvas { background: #2a9d8f; display: block; margin: 0 auto; }
+
+#hud {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  font-family: sans-serif;
+  pointer-events: none;
+}
+
+#scoreboard ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
